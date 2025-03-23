@@ -3,7 +3,7 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "arn:aws:ecs:us-east-1:692859928929:task/ecs-cluster/0298bd2c171f47c58783a070cc27ad76"
+        TaskDefinition: "ecs-lab"
         LoadBalancerInfo:
-          ContainerName: "httpd"
+          ContainerName: "sample-website"
           ContainerPort: 80
