@@ -1,30 +1,9 @@
-{
-    "taskDefinition": "ecs-lab",
-    "cluster": "ecs-cluster",
-    "loadBalancers": [
-        {
-            "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:692859928929:targetgroup/Target80/a345c07d26584d69",
-            "containerName": "sample-website",
-            "containerPort": 80
-        }
-    ],
-    "desiredCount": 1,
-    "launchType": "FARGATE",
-    "schedulingStrategy": "REPLICA",
-    "deploymentController": {
-        "type": "CODE_DEPLOY"
-    },
-    "networkConfiguration": {
-        "awsvpcConfiguration": {
-            "subnets": [
-                "subnet-05d8291c8906dbc5c",
-                "subnet-090354626f1117a6c"
-            ],
-            "securityGroups": [
-                "sg-0b84225e1376085f3"
-            ],
-            "assignPublicIp": "ENABLED"
-        }
-    }
-}
-
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:us-east-1:692859928929:task/ecs-cluster/0298bd2c171f47c58783a070cc27ad76"
+        LoadBalancerInfo:
+          ContainerName: "httpd"
+          ContainerPort: 80
